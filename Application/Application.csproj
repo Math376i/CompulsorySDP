@@ -7,7 +7,13 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="Interface" />
+      <ProjectReference Include="..\Domain\Domain.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="AutoMapper" Version="12.0.0" />
+      <PackageReference Include="FluentValidation" Version="11.2.2" />
+      <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="7.0.0-rc.2.22472.3" />
     </ItemGroup>
 
 </Project>

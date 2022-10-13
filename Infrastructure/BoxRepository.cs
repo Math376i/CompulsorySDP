@@ -1,9 +1,10 @@
-﻿using Entities;
+﻿using Application.Interfaces;
+using Entities;
 
 namespace Infrastructure;
 
 
-    public class BoxRepository
+    public class BoxRepository : IBoxRepository
     {
         private BoxDbContext _boxContext;
 
@@ -30,5 +31,34 @@ namespace Infrastructure;
             _boxContext.Database.EnsureCreated();
         
         }
-    
-}
+
+        public List<Box> GetAllBoxes()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Box CreateNewBox(Box box)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Box GetBoxById(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void RebuildDB()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Box UpdateBox(Box box)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Box DeleteBox(int id)
+        {
+            throw new NotImplementedException();
+        }
+    }

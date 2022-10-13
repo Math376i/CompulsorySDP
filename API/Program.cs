@@ -1,6 +1,7 @@
-using API.DTOs;
+using Application.DTOs;
 using AutoMapper;
 using Entities;
+using FluentValidation;
 using Infrastructure;
 using Microsoft.EntityFrameworkCore;
 
@@ -10,7 +11,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 var config = new MapperConfiguration(conf =>
 {
-    conf.CreateMap<PostBoxDTO, Box>();
+    conf.CreateMap<BoxDTOs, Box>();
 });
 
 var mapper = config.CreateMapper();
@@ -21,6 +22,8 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddValidatorsFromAssemblies(AppDomain.CurrentDomain.GetAssemblies());
+
 builder.Services.AddDbContext<BoxDbContext>(options => options.UseSqlite(
     "Data source=db.db"
 ));

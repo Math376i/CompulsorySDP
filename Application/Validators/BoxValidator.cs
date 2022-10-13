@@ -1,11 +1,10 @@
-using API.DTOs;
-using Entities;
+using Application.DTOs;
 using FluentValidation;
 using FluentValidation.Validators;
 
 namespace API;
 
-public class BoxValidator : AbstractValidator<PostBoxDTO>
+public class BoxValidator : AbstractValidator<BoxDTOs>
 {
     public BoxValidator()
     {

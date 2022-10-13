@@ -1,32 +1,53 @@
+using API.DTOs;
+using AutoMapper;
+using Entities;
+using Infrastructure;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers;
 
 [ApiController]
-[Route("[controller]")]
-public class WeatherForecastController : ControllerBase
+[Route("[Controller]")]
+public class ProductController : ControllerBase
 {
-    private static readonly string[] Summaries = new[]
-    {
-        "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-    };
 
-    private readonly ILogger<WeatherForecastController> _logger;
-
-    public WeatherForecastController(ILogger<WeatherForecastController> logger)
+    private BoxRepository _boxRepository;
+    private ProductValidator _productValidator;
+    private IMapper _mapper;
+    
+    public ProductController(ProductRepository repository, IMapper mapper)
     {
-        _logger = logger;
+        _productValidator = new ProductValidator();
+        _productRepository = repository;
+        _mapper = mapper;
+    }
+    
+    [HttpGet]
+    public List<Product> GetProducts()
+    {
+        return _productRepository.GetAllProducts();
     }
 
-    [HttpGet(Name = "GetWeatherForecast")]
-    public IEnumerable<WeatherForecast> Get()
+    [HttpPost]
+    public ActionResult CreateNewProduct(PostProductDTO dto)
     {
-        return Enumerable.Range(1, 5).Select(index => new WeatherForecast
-            {
-                Date = DateTime.Now.AddDays(index),
-                TemperatureC = Random.Shared.Next(-20, 55),
-                Summary = Summaries[Random.Shared.Next(Summaries.Length)]
-            })
-            .ToArray();
+        ProductValidator validator = new ProductValidator();
+        var validation = _productValidator.Validate(dto);
+        if (validation.IsValid)
+        {
+           
+            Product product = _mapper.Map<Product>(dto);
+            return Ok(_productRepository.InsertProduct(product));
+        }
+        return BadRequest(validation.ToString());
     }
+
+    [HttpGet]
+    [Route("CreateDB")]
+    public string CreateDB()
+    {
+        _productRepository.CreateDB();
+        return "Db has been created";
+    }
+    
 }

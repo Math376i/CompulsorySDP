@@ -13,16 +13,16 @@ namespace Infrastructure;
             _boxContext = context;
         }
 
-        public List<Box> GetAllProducts()
+        public List<Box> GetAllBoxes()
         {
-            return _boxContext.ProductTable.ToList();
+            return _boxContext.BoxTable.ToList();
         }
 
-        public Box InsertProduct(Box product)
+        public Box CreateNewBox(Box box)
         {
-            _boxContext.ProductTable.Add(product);
+            _boxContext.BoxTable.Add(box);
             _boxContext.SaveChanges();
-            return product;
+            return box;
         }
 
         public void CreateDB()
@@ -32,33 +32,29 @@ namespace Infrastructure;
         
         }
 
-        public List<Box> GetAllBoxes()
-        {
-            throw new NotImplementedException();
-        }
-
-        public Box CreateNewBox(Box box)
-        {
-            throw new NotImplementedException();
-        }
-
         public Box GetBoxById(int id)
         {
-            throw new NotImplementedException();
+            return _boxContext.BoxTable.Find(id) ?? throw new KeyNotFoundException();
         }
 
         public void RebuildDB()
         {
-            throw new NotImplementedException();
+            _boxContext.Database.EnsureDeleted();
+            _boxContext.Database.EnsureCreated();
         }
 
         public Box UpdateBox(Box box)
         {
-            throw new NotImplementedException();
+            _boxContext.BoxTable.Update(box);
+            _boxContext.SaveChanges();
+            return box;
         }
 
         public Box DeleteBox(int id)
         {
-            throw new NotImplementedException();
+            var boxToDelete = _boxContext.BoxTable.Find(id) ?? throw new KeyNotFoundException();
+            _boxContext.BoxTable.Remove(boxToDelete);
+            _boxContext.SaveChanges();
+            return boxToDelete;
         }
     }

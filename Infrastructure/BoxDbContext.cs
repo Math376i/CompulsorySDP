@@ -13,12 +13,12 @@ public class BoxDbContext : DbContext
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
-    {
+    {   
         modelBuilder.Entity<Box>()
             .Property(p => p.Id)
             .ValueGeneratedOnAdd();
     }
     
-    public DbSet<Box> ProductTable { get; set; }
+    public DbSet<Box> BoxTable { get; set; }
     
 }

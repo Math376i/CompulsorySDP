@@ -37,7 +37,7 @@ public class BoxController : ControllerBase
         try
         {
             var result = _boxService.CreateNewBox(dto);
-            return Created("product/" + result.Id, result);
+            return Created("box/" + result.Id, result);
         }
         catch (ValidationException e)
         {
@@ -53,8 +53,8 @@ public class BoxController : ControllerBase
         if (validation.IsValid)
         {
            
-            Box product = _mapper.Map<Box>(dto);
-            return Ok(_boxRepository.InsertProduct(product));
+            Box box = _mapper.Map<Box>(dto);
+            return Ok(_boxRepository.CreateNewBox(box));
         }
         return BadRequest(validation.ToString());
     }

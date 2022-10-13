@@ -5,9 +5,9 @@ using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace Infrastructure;
 
-public class ProductDbContext : DbContext
+public class BoxDbContext : DbContext
 {
-    public ProductDbContext(DbContextOptions<ProductDbContext> opts) : base(opts)
+    public BoxDbContext(DbContextOptions<BoxDbContext> opts) : base(opts)
     {
         
     }

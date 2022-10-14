@@ -7,10 +7,3 @@ public class BoxDTOs
     public int Length { get; set; }
     public int Width { get; set; }
 }
-
-public class PartialUpdateBoxDTO
-{
-    public int? Price { get; set; }
-    public string? Name { get; set; }
-    public int Id { get; set; }
-}

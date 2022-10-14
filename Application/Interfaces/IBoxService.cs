@@ -9,6 +9,6 @@ public interface IBoxService
     public Box CreateNewBox(BoxDTOs dto);
     public Box GetBoxById(int id);
     public void RebuildDB();
-    public Box UpdateBox(int id, Box box);
-    public Box DeleteBox(int id);
+    public Box UpdateBox(int Id, Box box);
+    public Box DeleteBox(int Id);
 }

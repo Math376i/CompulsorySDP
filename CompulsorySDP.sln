@@ -1,7 +1,5 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompulsorySDP", "CompulsorySDP\CompulsorySDP.csproj", "{149E902D-0961-49EA-8E6C-95D0838F1038}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csproj", "{1FE91F24-BB53-4884-81B2-F88998156CBE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "Application\Application.csproj", "{F3CE0368-1440-468A-B566-9407F241801C}"
@@ -16,10 +14,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{149E902D-0961-49EA-8E6C-95D0838F1038}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{149E902D-0961-49EA-8E6C-95D0838F1038}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{149E902D-0961-49EA-8E6C-95D0838F1038}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{149E902D-0961-49EA-8E6C-95D0838F1038}.Release|Any CPU.Build.0 = Release|Any CPU
 		{1FE91F24-BB53-4884-81B2-F88998156CBE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{1FE91F24-BB53-4884-81B2-F88998156CBE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1FE91F24-BB53-4884-81B2-F88998156CBE}.Release|Any CPU.ActiveCfg = Release|Any CPU

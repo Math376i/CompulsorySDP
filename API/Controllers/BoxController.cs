@@ -47,7 +47,7 @@ public class BoxController : ControllerBase
         {
             return StatusCode(500, e.Message);
         }
-        
+       /* 
         BoxValidator validator = new BoxValidator();
         var validation = _boxValidator.Validate(dto);
         if (validation.IsValid)
@@ -56,7 +56,7 @@ public class BoxController : ControllerBase
             Box box = _mapper.Map<Box>(dto);
             return Ok(_boxRepository.CreateNewBox(box));
         }
-        return BadRequest(validation.ToString());
+        return BadRequest(validation.ToString()); */
     }
 
     [HttpGet]

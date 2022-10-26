@@ -13,19 +13,16 @@ namespace API.Controllers;
 public class BoxController : ControllerBase
 {
     private IBoxService _boxService;
-    private BoxRepository _boxRepository;
-    private BoxValidator _boxValidator;
     private IMapper _mapper;
     
-    public BoxController(BoxRepository repository, IMapper mapper, IBoxService service)
+    public BoxController(IMapper mapper, IBoxService service)
     {
         _boxService = service;
-        _boxValidator = new BoxValidator();
-        _boxRepository = repository;
         _mapper = mapper;
     }
     
     [HttpGet]
+    [Route("GetAllBoxes")]
     public List<Box> GetBox()
     {
         return _boxService.GetAllBoxes();
@@ -47,16 +44,6 @@ public class BoxController : ControllerBase
         {
             return StatusCode(500, e.Message);
         }
-       /* 
-        BoxValidator validator = new BoxValidator();
-        var validation = _boxValidator.Validate(dto);
-        if (validation.IsValid)
-        {
-           
-            Box box = _mapper.Map<Box>(dto);
-            return Ok(_boxRepository.CreateNewBox(box));
-        }
-        return BadRequest(validation.ToString()); */
     }
 
     [HttpGet]
@@ -77,24 +64,16 @@ public class BoxController : ControllerBase
         }
     }
 
-    [HttpGet]
-    [Route("RebuildDB")]
-    public void RebuildDB()
-    {
-        _boxService.RebuildDB();
-    }
-
     [HttpPut]
-    [Route("{id}")]
-    public ActionResult<Box> UpdateBox([FromRoute] int id, [FromBody] Box box)
+    public ActionResult<Box> UpdateBox([FromBody] Box box)
     {
         try
         {
-            return Ok(_boxService.UpdateBox(id, box));
+            return Ok(_boxService.UpdateBox(box.Id ,box));
         }
         catch (KeyNotFoundException e)
         {
-            return NotFound("No box found at ID " + id);
+            return NotFound("No box found at ID " + box.Id);
         }
         catch (Exception e)
         {
@@ -117,10 +96,10 @@ public class BoxController : ControllerBase
     }
 
     [HttpGet]
-    [Route("CreateDB")]
-    public string CreateDB()
+    [Route("RebuildDB")]
+    public string RebuildDB()
     {
-        _boxRepository.CreateDB();
+        _boxService.RebuildDB();
         return "Db has been created";
     }
     

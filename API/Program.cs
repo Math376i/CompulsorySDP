@@ -1,3 +1,4 @@
+using System.Collections.Immutable;
 using Application.DTOs;
 using AutoMapper;
 using Entities;
@@ -24,10 +25,14 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddValidatorsFromAssemblies(AppDomain.CurrentDomain.GetAssemblies());
 
+builder.Services.AddValidatorsFromAssemblies(AppDomain.CurrentDomain.GetAssemblies());
+Application.DependencyResolver.DependencyResolverService.RegisterApplicationLayer(builder.Services);
+Infrastructure.DependencyResolverService.RegisterInfrastructureLayer(builder.Services);
+
+
 builder.Services.AddDbContext<BoxDbContext>(options => options.UseSqlite(
     "Data source=db.db"
 ));
-builder.Services.AddScoped<BoxRepository>();
 
 var app = builder.Build();
 

@@ -29,6 +29,8 @@ builder.Services.AddValidatorsFromAssemblies(AppDomain.CurrentDomain.GetAssembli
 Application.DependencyResolver.DependencyResolverService.RegisterApplicationLayer(builder.Services);
 Infrastructure.DependencyResolverService.RegisterInfrastructureLayer(builder.Services);
 
+builder.Services.AddCors();
+
 
 builder.Services.AddDbContext<BoxDbContext>(options => options.UseSqlite(
     "Data source=db.db"
@@ -41,7 +43,16 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
+    
+    app.UseCors(options =>
+    {
+        options.AllowAnyOrigin();
+        options.AllowAnyHeader();
+        options.AllowAnyMethod();
+    });
 }
+
+
 
 app.UseHttpsRedirection();
 

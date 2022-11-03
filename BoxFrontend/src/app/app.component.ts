@@ -14,8 +14,6 @@ export class AppComponent implements OnInit{
   boxWidth: number = 0;
   boxId: number = -1;
 
-
-
   constructor(private http: HttpService) {
 
   }
@@ -36,7 +34,8 @@ export class AppComponent implements OnInit{
     this.boxes.push(result)
   }
 
-  deleteBox(id: any) {
-    this.http.deleteBox(id);
-  }
+  async deleteBox(id: any) {
+    const box = await this.http.deleteBox(id);
+    this.boxes = this.boxes.filter((b: { id: any; }) => b.id != box.id)
+    }
 }

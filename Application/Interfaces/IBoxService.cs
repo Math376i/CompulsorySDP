@@ -3,6 +3,7 @@ using Entities;
 
 namespace Application.Interfaces;
 
+// The interface helps to implements the methods 
 public interface IBoxService
 {
     public List<Box> GetAllBoxes();

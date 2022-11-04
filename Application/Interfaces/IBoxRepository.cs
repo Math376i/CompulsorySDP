@@ -1,7 +1,7 @@
 ﻿using Entities;
 
 namespace Application.Interfaces;
-
+// The interface helps to implement all the methods
 public interface IBoxRepository
 {
     public List<Box> GetAllBoxes();

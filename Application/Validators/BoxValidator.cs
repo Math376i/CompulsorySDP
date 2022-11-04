@@ -2,7 +2,7 @@
 using FluentValidation;
 
 namespace API;
-
+// The class helps to validate the inputs in the program
 public class BoxValidator: AbstractValidator<Box>
 {
     public BoxValidator()

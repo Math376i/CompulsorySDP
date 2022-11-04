@@ -1,5 +1,8 @@
 ﻿namespace Entities;
 
+
+
+// The class helps to get all the things to make a box
 public class Box
 {
     public int Id { get; set; }

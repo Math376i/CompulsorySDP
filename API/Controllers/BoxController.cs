@@ -27,6 +27,7 @@ public class BoxController : ControllerBase
     {
         return _boxService.GetAllBoxes();
     }
+// The method helps creating a new box
 
     [HttpPost]
     public ActionResult CreateNewBox(BoxDTOs dto)
@@ -45,7 +46,7 @@ public class BoxController : ControllerBase
             return StatusCode(500, e.Message);
         }
     }
-
+// The method helps to find the box by the Id
     [HttpGet]
     [Route("{id}")]
     public ActionResult<Box> GetBoxById(int id)
@@ -63,7 +64,7 @@ public class BoxController : ControllerBase
             return StatusCode(500, e.ToString());
         }
     }
-
+// The methods helps to update a box
     [HttpPut]
     public ActionResult<Box> UpdateBox([FromBody] Box box)
     {
@@ -80,7 +81,7 @@ public class BoxController : ControllerBase
             return StatusCode(500, e.ToString());
         }
     }
-
+// The methods helps to delete a box 
     [HttpDelete]
     [Route("{id}")]
     public ActionResult<Box> DeleteBox(int id)
@@ -94,7 +95,7 @@ public class BoxController : ControllerBase
             return NotFound("No box found at ID " + id);
         }
     }
-
+// The methods helps to rebuild the datebase
     [HttpGet]
     [Route("RebuildDB")]
     public string RebuildDB()

@@ -7,6 +7,7 @@ namespace Infrastructure;
 
 public class BoxDbContext : DbContext
 {
+    
     public BoxDbContext(DbContextOptions<BoxDbContext> opts) : base(opts)
     {
         

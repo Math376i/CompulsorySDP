@@ -23,12 +23,13 @@ public class BoxService : IBoxService
         _postValidator = postValidator;
         _boxValidator = boxValidator;
     }
-
+// The method create a list of all the box
     public List<Box> GetAllBoxes()
     {
         return _boxRepository.GetAllBoxes();
     }
 
+    // The methods helps to create a new box
     public Box CreateNewBox(BoxDTOs dto)
     {
         var validation = _postValidator.Validate(dto);
@@ -39,16 +40,17 @@ public class BoxService : IBoxService
         return _boxRepository.CreateNewBox(_mapper.Map<Box>(dto));
     }
 
+    // The method helps to get the box by the id
     public Box GetBoxById(int id)
     {
         return _boxRepository.GetBoxById(id);
     }
-
+// The method helps to rebuild the database
     public void RebuildDB()
     {
         _boxRepository.RebuildDB();
     }
-
+// The method helps to update a box
     public Box UpdateBox(int id, Box box)
     {
         if (id != box.Id)
@@ -58,7 +60,7 @@ public class BoxService : IBoxService
             throw new ValidationException(validation.ToString());
         return _boxRepository.UpdateBox(box);
     }
-
+// The method helps to delete a box
     public Box DeleteBox(int id)
     {
         return _boxRepository.DeleteBox(id);

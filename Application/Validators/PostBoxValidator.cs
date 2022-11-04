@@ -3,7 +3,7 @@ using FluentValidation;
 using FluentValidation.Validators;
 
 namespace API;
-
+// The class helps to validate the input for  the box
 public class PostBoxValidator : AbstractValidator<BoxDTOs>
 {
     public PostBoxValidator()
